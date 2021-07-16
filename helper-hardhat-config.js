@@ -11,11 +11,13 @@ const networkConfig = {
         fee: '100000000000000000',
         keyHash: '0x6c3699283bda56ad74f6b855546325b68d482e983852a7a82979cc4807b641f4',
         jobId: '29fa9aa13bf1468788b7cc4a500a45b8',
-        fundAmount: "1000000000000000000"
+        fundAmount: "1000000000000000000",
+        ethUsdPriceFeed: '0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419'
     },
     42: {
         name: 'kovan',
         linkToken: '0xa36085F69e2889c224210F603D836748e7dC0088',
+        batUsdPriceFeed: '0x0e4fcEC26c9f85c3D714370c98f43C4E02Fc35Ae',
         ethUsdPriceFeed: '0x9326BFA02ADD2366b30bacB125260Af641031331',
         keyHash: '0x6c3699283bda56ad74f6b855546325b68d482e983852a7a82979cc4807b641f4',
         vrfCoordinator: '0xdD3782915140c8f3b190B5D67eAc6dc5760C46E9',
@@ -27,6 +29,7 @@ const networkConfig = {
     4: {
         name: 'rinkeby',
         linkToken: '0x01be23585060835e02b77ef475b0cc51aa1e0709',
+        batUsdPriceFeed: '0x031dB56e01f82f20803059331DC6bEe9b17F7fC9',
         ethUsdPriceFeed: '0x8A753747A1Fa494EC906cE90E9f37563A8AF630e',
         keyHash: '0x2ed0feb3e7fd2022120aa84fab1945545a9f2ffc9076fd6156fa96eaff4c1311',
         vrfCoordinator: '0xb3dCcb4Cf7a26f6cf6B120Cf5A73875B7BBc655B',

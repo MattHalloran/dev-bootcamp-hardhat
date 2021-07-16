@@ -12,6 +12,12 @@ module.exports = async ({
     if (chainId == 31337) {
         log("Local network detected! Deploying mocks...")
         const linkToken = await deploy('LinkToken', { from: deployer, log: true })
+        await deploy('BatUsdAggregator', {
+            contract: 'MockV3Aggregator',
+            from: deployer,
+            log: true,
+            args: [DECIMALS, INITIAL_PRICE]
+        })
         await deploy('EthUsdAggregator', {
             contract: 'MockV3Aggregator',
             from: deployer,

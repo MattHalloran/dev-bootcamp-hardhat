@@ -6,6 +6,8 @@ require("@nomiclabs/hardhat-ethers")
 require("@nomiclabs/hardhat-truffle5")
 require("@nomiclabs/hardhat-etherscan")
 require("hardhat-deploy")
+require("hardhat-gas-reporter");
+require('solidity-coverage')
 require("./tasks/accounts")
 require("./tasks/balance")
 require("./tasks/fund-link")
@@ -19,39 +21,39 @@ require("./tasks/api-consumer")
 
 require('dotenv').config()
 
-const MAINNET_RPC_URL = process.env.MAINNET_RPC_URL || process.env.ALCHEMY_MAINNET_RPC_URL || "https://eth-mainnet.alchemyapi.io/v2/your-api-key"
+const MAINNET_RPC_URL = process.env.MAINNET_RPC_URL || process.env.ALCHEMY_MAINNET_RPC_URL;
 const RINKEBY_RPC_URL = process.env.RINKEBY_RPC_URL || "https://eth-rinkeby.alchemyapi.io/v2/your-api-key"
-const KOVAN_RPC_URL = process.env.KOVAN_RPC_URL || "https://eth-kovan.alchemyapi.io/v2/your-api-key"
+const KOVAN_RPC_URL = process.env.KOVAN_RPC_URL;
 const MNEMONIC = process.env.MNEMONIC || "your mnemonic"
-const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "Your etherscan API key"
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
 // optional
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "your private key"
 
 module.exports = {
-    defaultNetwork: "hardhat",
+    defaultNetwork: "kovan",
     networks: {
         hardhat: {
-            // // If you want to do some forking, uncomment this
-            // forking: {
-            //   url: MAINNET_RPC_URL
-            // }
+            // If you want to do some forking, uncomment this
+            forking: {
+              url: MAINNET_RPC_URL
+            }
         },
         localhost: {
         },
         kovan: {
             url: KOVAN_RPC_URL,
-            // accounts: [PRIVATE_KEY],
-            accounts: {
-                mnemonic: MNEMONIC,
-            },
+            accounts: [PRIVATE_KEY],
+            // accounts: {
+            //     mnemonic: MNEMONIC,
+            // },
             saveDeployments: true,
         },
         rinkeby: {
             url: RINKEBY_RPC_URL,
-            // accounts: [PRIVATE_KEY],
-            accounts: {
-                mnemonic: MNEMONIC,
-            },
+            accounts: [PRIVATE_KEY],
+            // accounts: {
+            //     mnemonic: MNEMONIC,
+            // },
             saveDeployments: true,
         },
         ganache: {
@@ -87,6 +89,9 @@ module.exports = {
     },
     mocha: {
         timeout: 100000
+    },
+    gasReporter: {
+        currency: 'USD'
     }
 }
 
